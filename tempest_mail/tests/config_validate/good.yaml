@@ -1,0 +1,16 @@
+mail_username: arxcruz
+mail_password: thepassword
+smtp_server: smtp.google.com
+cron:
+    check: '*'
+    clean: '*'
+jobs:
+    - name: 'periodic-tripleo-ci-centos-7-ovb-ha-tempest'
+      log_url: 'http://logs.openstack.org/periodic'
+      tempest_results: console.html
+      emails:
+          - mail: 'arxcruz@gmail.com'
+            name: 'Arx Cruz'
+      subject: 'Job periodic-tripleo-ci-centos-7-ovb-ha-tempest fails'
+      message: template.html
+      is_template: True
