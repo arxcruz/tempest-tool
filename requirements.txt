@@ -1,0 +1,13 @@
+Babel==2.3.4
+extras==1.0.0
+fixtures==3.0.0
+linecache2==1.0.0
+pbr==1.10.0
+pluggy==0.4.0
+py==1.4.31
+python-mimeparse==1.6.0
+python-subunit==1.2.0
+pytz==2016.7
+PyYAML==3.12
+six==1.10.0
+voluptuous==0.9.3
