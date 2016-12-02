@@ -1,11 +1,13 @@
 import yaml
 
+
 class Config(object):
     pass
 
 
 class Job(Config):
     pass
+
 
 class Cron(Config):
     pass
@@ -45,4 +47,3 @@ def loadConfig(path_config):
             e.name = email['name']
             j.emails[e.name] = e
             e.mail = email['mail']
-        
