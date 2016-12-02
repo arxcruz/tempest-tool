@@ -124,8 +124,8 @@ def get_tests_results(console):
           for l in console.splitlines() if OK in l]
     errors = [TESTRE.search(l).group(1)
               for l in console.splitlines() if ERROR in l]
-    all_skipped = [TESTRE.search(l).group(1)
-              for l in console.splitlines() if SKIPPED in l]
+    # all_skipped = [TESTRE.search(l).group(1)
+    #               for l in console.splitlines() if SKIPPED in l]
     return failed, ok, errors
 
 
@@ -322,4 +322,4 @@ def main(upstream=True, downstream=False):
 
 
 if __name__ == '__main__':
-main()
+    main()
