@@ -1,5 +1,5 @@
-from distutils.core import setup
+import setuptools
 
-setup(name='tempest-mail',
-      version='0.1',
-      )
+setuptools.setup(
+    setup_requires=['pbr>=1.3'],
+    pbr=True)

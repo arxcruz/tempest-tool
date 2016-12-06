@@ -1,5 +1,5 @@
-import utils
-from constants import TITLE
+from tempestmail import utils
+from tempestmail.constants import TITLE
 from six.moves.html_parser import HTMLParser
 
 

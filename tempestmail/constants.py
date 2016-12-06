@@ -10,3 +10,12 @@ FAILED = "... FAILED"
 OK = "... ok"
 ERROR = "... ERROR"
 SKIPPED = "... SKIPPED"
+
+TESTS = {
+    'tempest.scenario.test_volume_boot_pattern.*':
+        'http://bugzilla.redhat.com/1272289',
+    'tempest.api.identity.*v3.*':
+        'https://bugzilla.redhat.com/1266947',
+    '.*test_external_network_visibility':
+        'https://bugs.launchpad.net/tripleo/+bug/1577769',
+}

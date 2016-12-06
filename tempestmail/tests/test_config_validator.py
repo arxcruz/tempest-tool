@@ -1,9 +1,9 @@
 import os
 import unittest
 
-from tempest_mail import tests
+from tempestmail import tests
 
-from tempest_mail.cmd.config_validator import ConfigValidator
+from tempestmail.cmd.config_validator import ConfigValidator
 from yaml.parser import ParserError
 from voluptuous import MultipleInvalid
 

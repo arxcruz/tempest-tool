@@ -1,12 +1,39 @@
 import yaml
 
+import tempestmail.constants as constants
+import tempestmail.exceptions as exceptions
+import tempestmail.utils as utils
+
+from six.moves.urllib.parse import urljoin
+
 
 class Config(object):
     pass
 
 
 class Job(Config):
-    pass
+    def get_index(self):
+        ''' Get index page of periodic job and returns all links to jobs'''
+        url = urljoin(self.log_url, self.name)
+        res = utils.get_html(url)
+        if res is None or not res.ok:
+            raise exceptions.FailGetContent('Failed to get job URL')
+
+        body = res.content.decode() if res.content else ''
+        if not body:
+            raise exceptions.ContentNotFound('No content in index')
+
+        with open("/tmp/mytest", "w") as f:
+            f.write(body)
+        hrefs = [constants.HREF.search(l).group(1)
+                 for l in body.splitlines() if constants.HREF.search(l)]
+        links = ["/".join((url, link))
+                 for link in hrefs if constants.JOBRE.match(link)]
+        if links:
+            return links
+        else:
+            raise exceptions.JobNotFound('No periodic job link were '
+                                         'found in %s' % url)
 
 
 class Cron(Config):
@@ -21,6 +48,9 @@ def loadConfig(path_config):
     config = yaml.load(open(path_config))
 
     newconfig = Config()
+
+    newconfig.crons = {}
+    newconfig.jobs = {}
 
     newconfig.username = config.get('mail_username')
     newconfig.password = config.get('mail_password')
@@ -47,3 +77,5 @@ def loadConfig(path_config):
             e.name = email['name']
             j.emails[e.name] = e
             e.mail = email['mail']
+
+    return newconfig

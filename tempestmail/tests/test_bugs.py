@@ -1,7 +1,7 @@
 import mock
 import unittest
 
-import tempest_mail.bugs as bugs
+import tempestmail.bugs as bugs
 
 
 class TestBugs(unittest.TestCase):
@@ -24,7 +24,7 @@ class TestBugs(unittest.TestCase):
         with self.assertRaises(ValueError):
             bugs.bug_factory(self.error_url)
 
-    @mock.patch('tempest_mail.utils.get_html')
+    @mock.patch('tempestmail.utils.get_html')
     def test_bug_status_bugzilla(self, get_html_mock):
         title = ('<title>Bug 1386421 &ndash; Tempest fail: tempest.api.'
                  'compute.servers.test_server_actions.ServerActionsTestJSON'
@@ -46,7 +46,7 @@ class TestBugs(unittest.TestCase):
         self.assertEquals(name, ('', None))
         get_html_mock.assert_called()
 
-    @mock.patch('tempest_mail.utils.get_html')
+    @mock.patch('tempestmail.utils.get_html')
     def test_bug_status_launchpad(self, get_html_mock):
         title = ('<title>Bug #1633713 "puppet-ntp is breaking ci" : Bugs : '
                  'tripleo</title>')
