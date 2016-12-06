@@ -15,18 +15,18 @@ class TestConfigValidator(unittest.TestCase):
 
     def test_good_config_file(self):
         config = os.path.join(os.path.dirname(tests.__file__),
-                              'config_validate', 'good.yaml')
+                              'fixtures', 'config_validate', 'good.yaml')
         validator = ConfigValidator(config)
         validator.validate()
 
     def test_bad_config_file(self):
         config = os.path.join(os.path.dirname(tests.__file__),
-                              'config_validate', 'bad.yaml')
+                              'fixtures', 'config_validate', 'bad.yaml')
         validator = ConfigValidator(config)
         self.assertRaises(ParserError, validator.validate)
 
     def test_ugly_config_file(self):
         config = os.path.join(os.path.dirname(tests.__file__),
-                              'config_validate', 'ugly.yaml')
+                              'fixtures', 'config_validate', 'ugly.yaml')
         validator = ConfigValidator(config)
         self.assertRaises(MultipleInvalid, validator.validate)

@@ -63,7 +63,7 @@ def get_html_request_none(url, request):
 class TestConfigJob(unittest.TestCase):
     def setUp(self):
         self.config_file = os.path.join(os.path.dirname(tests.__file__),
-                                        'config_validate',
+                                        'fixtures', 'config_validate',
                                         'good.yaml')
         self.config = tempestmail.config.loadConfig(self.config_file)
 
