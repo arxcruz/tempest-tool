@@ -55,6 +55,7 @@ def loadConfig(path_config):
     newconfig.username = config.get('mail_username')
     newconfig.password = config.get('mail_password')
     newconfig.smtp = config.get('smtp_server')
+    newconfig.template_path = config.get('template_path')
 
     for name, default in [('check', '*'), ('clean', '*')]:
         c = Cron()

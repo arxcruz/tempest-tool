@@ -34,6 +34,7 @@ class ConfigValidator(object):
             'mail_username': str,
             'mail_password': str,
             'smtp_server': str,
+            'template_path': str,
             'cron': cron,
             'jobs': [jobs]
         }
