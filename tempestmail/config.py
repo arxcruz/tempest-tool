@@ -72,11 +72,11 @@ def loadConfig(path_config):
         j.subject = job.get('subject', 'Job fails')
         j.is_template = job.get('is_template', False)
         j.message = job.get('message')
-        j.emails = {}
+        j.emails = []
         for email in job['emails']:
             e = Email()
             e.name = email['name']
-            j.emails[e.name] = e
             e.mail = email['mail']
+            j.emails.append(e)
 
     return newconfig
