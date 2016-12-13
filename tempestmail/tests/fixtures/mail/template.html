@@ -1,0 +1,7 @@
+{% if data.get('new') %}
+    <h2>New failures</h2>
+{% elif data.get('failed') %}
+    <h2>Success</h2>
+{% else %}
+    <h2>unexpected failures</h2>
+{% endif %}
