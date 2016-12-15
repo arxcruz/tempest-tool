@@ -85,6 +85,21 @@ class TestTempestMail(unittest.TestCase):
         msg['From'] = ''
         msg['To'] = ",".join(['arxcruz@gmail.com'])
         _mail.send_mail(self.job, data)
-        # smtp_mock.assert_called_once()
+        smtp_mock.assert_called_once()
+        smtp_mock.return_value.sendmail.assert_called_with(
+            '', ['arxcruz@gmail.com'], msg.as_string())
+
+        smtp_mock.reset_mock()
+
+        self.job.is_template = False
+        self.job.message = 'Hello World'
+        msg = MIMEText(self.job.message)
+        msg['Subject'] = self.job.subject
+        msg['From'] = ''
+        msg['To'] = ",".join(['arxcruz@gmail.com'])
+
+        _mail.send_mail(self.job, data)
+
+        smtp_mock.assert_called_once()
         smtp_mock.return_value.sendmail.assert_called_with(
             '', ['arxcruz@gmail.com'], msg.as_string())
