@@ -3,8 +3,7 @@ mail_password: thepassword
 smtp_server: smtp.google.com
 template_path: /etc/tempest-tool/templates
 cron:
-    check: '*'
-    clean: '*'
+    check: '* 22 * * *'
 jobs:
     - name: 'periodic-tripleo-ci-centos-7-ovb-ha-tempest'
       log_url: 'http://logs.openstack.org/periodic'

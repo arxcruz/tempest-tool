@@ -12,7 +12,6 @@ class ConfigValidator(object):
     def validate(self):
         cron = {
             'check': str,
-            'clean': str,
         }
 
         emails = {

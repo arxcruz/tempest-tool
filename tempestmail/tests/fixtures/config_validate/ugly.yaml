@@ -3,7 +3,6 @@ mail_password: thepassword
 smtp_server: smtp.google.com
 cron:
     check: '*'
-    clean: '*'
 jobs:
     - name: 'periodic-tripleo-ci-centos-7-ovb-ha-tempest'
       log_url: 'http://logs.openstack.org/periodic'
