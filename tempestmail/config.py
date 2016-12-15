@@ -17,7 +17,7 @@ class Job(Config):
         url = urljoin(self.log_url, self.name)
         res = utils.get_html(url)
         if res is None or not res.ok:
-            raise exceptions.FailGetContent('Failed to get job URL')
+            raise exceptions.FailGetContent('Failed to get job URL %s' % url)
 
         body = res.content.decode() if res.content else ''
         if not body:
@@ -54,6 +54,7 @@ def loadConfig(path_config):
 
     newconfig.username = config.get('mail_username')
     newconfig.password = config.get('mail_password')
+    newconfig.mail_from = config.get('mail_from', '')
     newconfig.smtp = config.get('smtp_server')
     newconfig.template_path = config.get('template_path')
 
@@ -67,7 +68,7 @@ def loadConfig(path_config):
         j = Job()
         j.name = job['name']
         newconfig.jobs[j.name] = j
-        j.log_url = job.get('log_url', 'http://logs.openstack.org/periodic')
+        j.log_url = job.get('log_url', 'http://logs.openstack.org/periodic/')
         j.tempest_results = job.get('tempest_results', 'console.html')
         j.subject = job.get('subject', 'Job fails')
         j.is_template = job.get('is_template', False)
