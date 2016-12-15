@@ -12,8 +12,6 @@ class TempestMailCmd(tempestmail.cmd.TempestMailApp):
         parser.add_argument('-c', dest='config',
                             default='/etc/tempest-mail/tempest-mail.yaml',
                             help='Path to config file')
-        parser.add_argument('-d', dest='nodaemon', action='store_true',
-                            help='Do not run as a daemon')
         parser.add_argument('-l', dest='logconfig',
                             help='Path to log config file')
         parser.add_argument('-p', dest='pidfile',
