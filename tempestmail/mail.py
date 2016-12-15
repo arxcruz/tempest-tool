@@ -7,7 +7,7 @@ from jinja2 import Environment, FileSystemLoader
 class Mail(object):
     def __init__(self, config):
         self.config = config
-        self.mail_from = ''
+        self.mail_from = config.mail_from
         self.username = config.username
         self.password = config.password
         self.smtp = config.smtp
@@ -30,5 +30,8 @@ class Mail(object):
         msg['From'] = self.mail_from
         msg['To'] = ",".join(addresses)
         s = smtplib.SMTP(self.smtp)
+        s.ehlo()
+        s.starttls()
+        s.login(self.username, self.password)
         s.sendmail(self.mail_from, addresses, msg.as_string())
         s.quit()
